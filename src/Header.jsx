@@ -1,4 +1,5 @@
 import React from "react";
+import Profile from "./Profile";
 
 export default function Header() {
   return (
@@ -8,7 +9,7 @@ export default function Header() {
         <p className="text-lg text-gray-400">MERN Stack Developer</p>
       </div>
       <img
-        src="/path-to-your-image.jpg"
+        src="/bhuvanesh.JPG"
         alt="Bhuvanesh B"
         className="w-16 h-16 rounded-full border-3 border-gray-700"
       />
