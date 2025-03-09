@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./Footer";
 
-export default ProfilePopup = ({ isOpen, onClose }) => {
+export default function ProfilePopup  ({ isOpen, onClose })  {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 flex items-center justify-center border border-gray-800 shadow-2xl p-4 ">
