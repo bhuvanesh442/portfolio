@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import ProfilePopup from "./ProfilePopup";
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header({ setIsOpen }) {
   return (
   <>
     <div className="w-full flex items-center justify-between p-1 border-b-3 border-gray-700 sticky top-0 bg-gray-900 z-10 ">
@@ -17,7 +16,6 @@ export default function Header() {
         onClick={() => setIsOpen(true)}
       />
     </div>
-     <ProfilePopup isOpen={isOpen} onClose={() => setIsOpen(false)} />
   </>
   );
 }
