@@ -11,7 +11,7 @@ export default function Header() {
         <p className="text-lg text-gray-400">MERN Stack Developer</p>
       </div>
       <img
-        src="/bhuvanesh.JPG"
+        src="/bb.webp"
         alt="Bhuvanesh B"
         className="w-16 h-16 rounded-full border-3 border-gray-700"
         onClick={() => setIsOpen(true)}
