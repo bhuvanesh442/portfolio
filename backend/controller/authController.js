@@ -1,30 +1,16 @@
-import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const login = async (req, res) => {
+export const login = (req, res) => {
   const { email, password } = req.body;
-
-  try {
-    if (email !== process.env.ADMIN_EMAIL) {
-      return res.status(400).json({ error: "Invalid credentials" });
-    }
-
-    const isMatch = bcrypt.compare(password, process.env.ADMIN_PASSWORD);
-    if (!isMatch) {
-      return res.status(400).json({ error: "Invalid credentials" });
-    }
-
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-
-    res.json({ token, message: "Login successful" });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  if (email !== process.env.ADMIN_EMAIL || password !== process.env.ADMIN_PASSWORD) {
+    return res.status(400).json({ error: "Invalid credentials" });
   }
+  const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production" });
+  res.json({ message: "Login successful" });
 };
 
 export const logout = (req, res) => {
-    res.json({ message: "Logout successful" });
-  };
-  
+  res.clearCookie("token");
+  res.json({ message: "Logout successful" });
+};
